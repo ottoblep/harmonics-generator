@@ -7,10 +7,10 @@ int main() {
 
     // Dissonance Weight Function
     auto dissonance_weight = [](double q) -> double {
-        return std::pow(2, std::exp(4.0 * q) - std::exp(-4.0 * q));
+        return std::pow(2, std::exp(1.0) * 4 * q * std::exp(-4.0 * q));
     };
 
-    std::array<double, 500> x_values;
+    std::array<double, 1700> x_values;
     std::iota(x_values.begin(), x_values.end(), 0.0);
     std::ranges::for_each(x_values, [](double& x) { x = 0.001 * x; });
     std::ranges::for_each(x_values, [](double& x) { std::cout << x << " "; });
