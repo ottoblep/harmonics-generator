@@ -23,9 +23,6 @@ int main() {
     using namespace plot;
     using namespace plot::ansi;
 
-    // Set terminal title
-    std::cout << title("Sine Wave Plot");
-    
     // Clear screen
     std::cout << clear;
 
@@ -36,10 +33,19 @@ int main() {
 
     // Plot sine wave
     std::cout << foreground(plot::ansi::Color::Cyan);
-    for (int x = 0; x < width; ++x) {
-        double value = 0.05 * dissonance_weight((double) x / width - 0.2);
-        int y = static_cast<int>((height) - value * (height - 2));
-        std::cout << move_to({x + 1, y + 1}) << "*";
+    // Find min/max for scaling
+    auto [y_min_it, y_max_it] = std::minmax_element(y_values.begin(), y_values.end());
+    double y_min = *y_min_it;
+    double y_max = *y_max_it;
+
+    // Plot all points, scaling to fit width and height
+    for (size_t i = 0; i < x_values.size(); ++i) {
+        // Scale x to plot width
+        int x_plot = static_cast<int>(i * (width - 1) / (x_values.size() - 1));
+        // Scale y to plot height (invert y axis for terminal)
+        double y_scaled = (y_values[i] - y_min) / (y_max - y_min);
+        int y_plot = static_cast<int>((height - 1) - y_scaled * (height - 2));
+        std::cout << move_to({x_plot + 1, y_plot + 1}) << "*";
     }
 
     // Reset attributes
