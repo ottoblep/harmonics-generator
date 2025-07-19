@@ -1,1 +1,1 @@
-add_executable(harmonics_generator hello.cpp plot.hpp)
+add_executable(harmonics_generator main.cpp plot.hpp)
