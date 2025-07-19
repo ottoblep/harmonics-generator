@@ -1,3 +1,4 @@
+#include "plot.hpp"
 #include <iostream>
 using namespace std;
 
