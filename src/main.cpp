@@ -40,7 +40,7 @@ int main() {
     // Plot sine wave
     std::cout << foreground(plot::ansi::Color::Cyan);
     for (int x = 0; x < width; ++x) {
-        double value = height * dissonance_weight(20 * x / width);
+        double value = height * dissonance_weight(20 * (double) x / width);
         int y = static_cast<int>((height / 2) - value * (height / 2 - 2));
         std::cout << move_to({x + 1, y + 1}) << "*";
     }
