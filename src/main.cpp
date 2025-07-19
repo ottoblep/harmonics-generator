@@ -10,9 +10,15 @@ int main() {
         return std::pow(2, std::exp(4.0 * q) - std::exp(-4.0 * q));
     };
 
-    std::array<double, 100> x_values {};
+    std::array<double, 500> x_values;
     std::iota(x_values.begin(), x_values.end(), 0.0);
-    std::ranges::for_each(x_values.begin(), x_values.end(), [](double& x) { x = 0.1 * x; });
+    std::ranges::for_each(x_values, [](double& x) { x = 0.001 * x; });
+    std::ranges::for_each(x_values, [](double& x) { std::cout << x << " "; });
+    std::cout << std::endl <<  " ------------- " << std::endl;
+
+    std::array y_values = x_values;
+    std::ranges::for_each(y_values, [&](double& d) { d = dissonance_weight(d); });
+    std::ranges::for_each(y_values, [](double& x) { std::cout << x << " "; });
 
     using namespace plot;
     using namespace plot::ansi;
