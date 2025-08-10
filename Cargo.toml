@@ -13,4 +13,4 @@ default = []
 foobar = []
 
 [dependencies]
-burn = { version = "~0.18", features = ["std", "tui", "train", "vision", "wgpu", "fusion", "wgpu"], default-features = false }
+burn = { version = "~0.18", features = ["std", "tui", "train", "vision", "wgpu", "fusion", "ndarray"], default-features = false }

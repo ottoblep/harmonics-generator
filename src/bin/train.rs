@@ -1,6 +1,6 @@
 #![recursion_limit = "131"]
 use burn::{
-    backend::{Autodiff, Wgpu},
+    backend::{ndarray::NdArrayDevice, Autodiff, NdArray},
     data::dataset::Dataset,
     optim::AdamConfig,
 };
@@ -11,11 +11,10 @@ use harmonics_generator::{
 };
 
 fn main() {
-    type MyBackend = Wgpu<f32, i32>;
+    type MyBackend = NdArray;
     type MyAutodiffBackend = Autodiff<MyBackend>;
 
-    // Create a default Wgpu device
-    let device = burn::backend::wgpu::WgpuDevice::default();
+    let device = NdArrayDevice::Cpu;
 
     // All the training artifacts will be saved in this directory
     let artifact_dir = "/tmp/guide";

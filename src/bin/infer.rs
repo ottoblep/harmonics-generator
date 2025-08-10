@@ -1,11 +1,11 @@
 #![recursion_limit = "131"]
-use burn::{backend::Wgpu, data::dataset::Dataset};
+use burn::{backend::{NdArray}, data::dataset::Dataset};
 use harmonics_generator::inference;
 
 fn main() {
-    type MyBackend = Wgpu<f32, i32>;
+    type MyBackend = NdArray;
 
-    let device = burn::backend::wgpu::WgpuDevice::default();
+    let device = burn::backend::ndarray::NdArrayDevice::Cpu;
 
     // All the training artifacts are saved in this directory
     let artifact_dir = "/tmp/guide";
