@@ -1,9 +1,9 @@
 [package]
 name = "harmonics-generator"
 description = ""
-version = ""
+version = "0.1.0"
 license = ""
-edition = ""
+edition = "2021"
 
 # MSRV
 rust-version = "1.65.0"
