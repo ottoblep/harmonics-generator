@@ -10,7 +10,7 @@
       systems = [ "x86_64-linux" ];
       perSystem = { config, self', pkgs, lib, system, ... }:
         let
-          runtimeDeps = with pkgs; [ alsa-lib speechd ];
+          runtimeDeps = with pkgs; [ ];
           buildDeps = with pkgs; [ pkg-config rustPlatform.bindgenHook ];
           devDeps = with pkgs; [ gdb ];
 
@@ -48,7 +48,7 @@
           };
 
           packages.default = self'.packages.example;
-          devShells.default = self'.devShells.nightly;
+          devShells.default = self'.devShells.stable;
 
           packages.example = (rustPackage "foobar");
           packages.example-base = (rustPackage "");

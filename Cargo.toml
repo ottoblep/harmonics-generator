@@ -3,14 +3,14 @@ name = "harmonics-generator"
 description = ""
 version = "0.1.0"
 license = ""
-edition = "2021"
+edition = "2024"
 
 # MSRV
-rust-version = "1.65.0"
+rust-version = "1.85.0"
 
 [features]
 default = []
 foobar = []
 
 [dependencies]
-tts = "0.26.3"
+burn = { version = "~0.18", features = ["std", "tui", "train", "vision", "wgpu", "fusion"], default-features = false }
